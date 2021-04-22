@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串转换json</title>
+    <style>
+        #result {
+            height: 200px;
+            width: 300px;
+            border: 2px solid pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="result">
+
+    </div>
+    <script>
+        // 获取元素对象
+        const result = document.getElementById('result');
+        // 绑定元素
+        window.onkeyup = function() {
+            // 1.创建对象
+            const xhr = new XMLHttpRequest();
+            // 2.初始化 设置类型与URL
+            xhr.responseType = 'json';
+            xhr.open('GET', "http://127.0.0.1:8000/json-server");
+            // 设置请求头
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            // 3.发送
+            xhr.send();
+            // 4.事件绑定
+            xhr.onreadystatechange = function() {
+                // 判断操作状态
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // 处理服务端返回的结果
+                        // result.innerHTML = xhr.response;
+                        // 1.手动进行数据转化
+                        // let data = JSON.parse(xhr.response);
+                        // result.innerHTML = data.name;
+                        // 2.自动进行数据转化
+                        result.innerHTML = xhr.response.name;
+                    };
+                };
+            };
+        };
+    </script>
+</body>
+
+</html>
