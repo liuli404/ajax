@@ -45,11 +45,25 @@ app.get('/delay', (request, response) => {
 
 // jquery服务
 app.all('/jquery-server', (request, response) => {
+    response.setHeader('Access-Control-Allow-Headers', '*');
     response.setHeader('Access-Control-Allow-Origin', '*');
     const data = { name: 'liuli', sex: 'nan' }
     response.send(JSON.stringify(data));
 });
-
+// axios服务
+app.all('/axios-server', (request, response) => {
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    const data = { name: 'liuli', sex: 'nan' }
+    response.send(JSON.stringify(data));
+});
+// fetch服务
+app.all('/fetch-server', (request, response) => {
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    const data = { name: 'liuli', sex: 'nan' }
+    response.send(JSON.stringify(data));
+});
 
 
 

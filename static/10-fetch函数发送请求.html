@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch函数</title>
+</head>
+
+<body>
+    <button>ajax请求</button>
+    <script>
+        const btn = document.querySelector('button');
+        btn.onclick = function() {
+            fetch('http://127.0.0.1:8000/fetch-server', {
+                method: 'POST',
+                headers: {
+                    name: "liuli"
+                },
+                body: 'username=liuli&&passwd=admin123'
+            }).then(res => {
+                return res.json();
+            }).then(res => {
+                console.log(res.name);
+            })
+        };
+    </script>
+</body>
+
+</html>

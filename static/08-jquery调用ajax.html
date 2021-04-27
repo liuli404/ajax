@@ -32,6 +32,36 @@
                 console.log(da);
             }, 'json')
         })
+        $('button').eq(2).click(function() {
+            $.ajax({
+                // url
+                url: 'http://127.0.0.1:8000/jquery-server',
+                // 参数
+                data: {
+                    a: 100,
+                    b: 200
+                },
+                // 请求类型
+                // 响应体结果
+                type: 'GET',
+                dataType: 'json',
+                // 成功的回调函数
+                success: function(data) {
+                    console.log(data);
+                },
+                // 超时时间
+                timeout: 2000,
+                // 失败的回调函数
+                error: function() {
+                    console.log('出错啦！！！');
+                },
+                // 头信息
+                headers: {
+                    c: 300,
+                    d: 400
+                },
+            })
+        })
     </script>
 </body>
 

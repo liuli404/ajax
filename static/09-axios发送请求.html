@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios发送请求</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+    <button>GET</button>
+    <button>POST</button>
+    <button>AJAX</button>
+    <script>
+        const btns = document.querySelectorAll('button');
+        // 配置baseUrl
+        axios.defaults.baseURL = "http://127.0.0.1:8000";
+        btns[0].addEventListener('click', function() {
+            // GET请求
+            axios.get('/axios-server', {
+                // 参数
+                params: {
+                    id: 100,
+                    vip: 9
+                },
+                headers: {
+                    name: "liuli",
+                    age: 25
+                }
+            }).then(value => {
+                console.log(value.data);
+            })
+        });
+        btns[1].addEventListener('click', function() {
+            // post请求
+            axios.post('/axios-server', {
+                username: 'admin',
+                passwd: 'admin123'
+            }, {
+                params: {
+                    id: 1010,
+                    vip: 923
+                },
+                headers: {
+                    height: "180",
+                    weight: 90
+                }
+            })
+        });
+        btns[2].addEventListener('click', function() {
+            axios({
+                // 地址
+                url: '/axios-server',
+                // 方法
+                method: 'POST',
+                // 参数
+                params: {
+                    vip: 100,
+                    ip: '110.110.110.110'
+                },
+                // 请求头
+                headers: {
+                    a: 100,
+                    c: 300
+                },
+                // 请求体
+                data: {
+                    username: 'admin',
+                    passwd: 'admin123'
+                }
+            }).then(response => {
+                console.log(response);
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.data.sex);
+            })
+        })
+    </script>
+</body>
+
+</html>
